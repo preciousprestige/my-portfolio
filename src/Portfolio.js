@@ -1,3 +1,4 @@
+// Portfolio.js
 import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -86,39 +87,61 @@ const Portfolio = () => {
   return (
     <div className="container">
       {location.pathname === '/' && (
-  <div className="header">
-    <video autoPlay loop muted className="video-header">
-      <source src="/video.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-)}
-
+        <div className="header">
+          <video autoPlay loop muted className="video-header">
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+        </div>
+      )}
 
       <h1 className="moving-text">WALK WITH ME, I'M INEFFABLE...</h1>
 
       <div className="links">
-        <div className="link-item"><i className="fab fa-instagram"></i> @that.ville</div>
-        <div className="link-item"><i className="fas fa-envelope"></i> Contact me!</div>
-        <div className="link-item"><i className="fas fa-laptop-code"></i> WebDev</div>
-        <div className="link-item"><i className="fab fa-spotify"></i> Spotify</div>
-        <div className="link-item"><i className="fab fa-github"></i> Github</div>
-        <div className="link-item"><i className="fas fa-map-marker-alt"></i> MNL/ABJ</div>
+        <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
+          <i className="fab fa-instagram"></i> @that.ville
+        </a>
+        <div 
+        className="link-item no-underline" 
+        onClick={() => setShowPopup(true)}
+        >
+          <i className="fas fa-envelope"></i> Contact me!
+        </div>
+
+        <div className="link-item no-underline"><i className="fas fa-laptop-code"></i> WebDev</div>
+
+        <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk?si=rXJ9ehM2SRyhuR4q2e5Lng&pt=51b8941126ffa488b41a58a20839ef21&pi=zLjMWhj6TUe4F"
+          target="_blank"
+           rel="noopener noreferrer" 
+           className="link-item no-underline"
+           >
+          <i className="fab fa-spotify"></i> Spotify
+        </a>
+        <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
+          <i className="fab fa-github"></i> Github
+        </a>
+        <div className="link-item no-underline"><i className="fas fa-map-marker-alt"></i> MNL/ABJ</div>
       </div>
 
       <div className="buttons-container">
-        <div className="transition-box" onClick={() => setShowAboutPopup(true)}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>WHO IS PRECIOUS?</span>
-        </div>
-
-        <div className="transition-box" onClick={() => navigate("/works")}>
+        <div className="transition-box blue-border" onClick={() => setShowAboutPopup(true)}>
           <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>
-            WORKS
-          </span>
+  Who is Precious?
+</span>
+
         </div>
 
-        <div className="transition-box" onClick={() => setShowPopup(true)}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>CONTACT ME</span>
+        <div className="transition-box blue-border" onClick={() => navigate("/works")}>
+          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>
+  Works
+</span>
+
+        </div>
+
+        <div className="transition-box blue-border" onClick={() => setShowPopup(true)}>
+          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>
+  CONTACT ME
+</span>
+
         </div>
       </div>
 
@@ -148,7 +171,7 @@ const Portfolio = () => {
             <img src={image3} alt="Art 3" className="bio-image" />
             <div className="bio-text">
               <h3>BEARING MY YOKE</h3>
-              <p className="image-text">
+              <p className="image-text bounce-text">
                 IT IS GOOD FOR A MAN TO BEAR THE YOKE WHILE HE IS YOUNG (LAMENTATION 3:27)...<br />
                 "FOR MY YOKE IS EASY AND MY BURDEN IS LIGHT.” (Matthew 11:28-30)
               </p>
@@ -164,32 +187,9 @@ const Portfolio = () => {
           <div className="popup-form">
             <h2>Contact Me</h2>
             <form onSubmit={handleSend}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                className="popup-input"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="popup-input"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                className="popup-textarea"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-              />
+              <input type="text" name="name" placeholder="Name" className="popup-input" value={formData.name} onChange={handleInputChange} required />
+              <input type="email" name="email" placeholder="Email" className="popup-input" value={formData.email} onChange={handleInputChange} required />
+              <textarea name="message" placeholder="Message" className="popup-textarea" value={formData.message} onChange={handleInputChange} required />
               <div className="popup-buttons">
                 <button type="submit" className="popup-send">Send</button>
                 <button type="button" onClick={handleCancel} className="popup-cancel">Cancel</button>
