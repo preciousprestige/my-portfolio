@@ -1,4 +1,3 @@
-// Portfolio.js
 import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -6,17 +5,18 @@ import "./style.css";
 import image1 from "./assets/image1.jpg";
 import image2 from "./assets/image2.jpg";
 import image3 from "./assets/image3.jpg";
-import { useLocation, useNavigate } from 'react-router-dom';
+import videoSrc from "./assets/video.mp4";
+import { useNavigate } from 'react-router-dom';
 
 const quotes = [
   "HAPPINESS EXISTS WHEN YOU DON'T KNOW A THING",
   "LIFE IS WHAT HAPPENS WHEN YOU'RE BUSY MAKING OTHER PLANS",
   "THE ONLY LIMIT TO OUR REALIZATION OF TOMORROW IS OUR DOUBTS OF TODAY",
-  "DO WHAT YOU CAN, WITH WHAT YOU HAVE, WHERE YOU ARE"
+  "DO WHAT YOU CAN, WITH WHAT YOU HAVE, WHERE YOU ARE",
+  "TOMORROW WILL BE BETTER, AND IF IT IS NOT, I'LL SAY IT AGAIN"
 ];
 
 const Portfolio = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const [time, setTime] = useState(new Date());
   const [quoteIndex, setQuoteIndex] = useState(0);
@@ -86,13 +86,12 @@ const Portfolio = () => {
 
   return (
     <div className="container">
-      {location.pathname === '/' && (
-        <div className="header">
-          <video autoPlay loop muted className="video-header">
-            <source src="/video.mp4" type="video/mp4" />
-          </video>
-        </div>
-      )}
+      
+      <div className="header">
+        <video autoPlay loop muted className="video-header">
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      </div>
 
       <h1 className="moving-text">WALK WITH ME, I'M INEFFABLE...</h1>
 
@@ -100,20 +99,12 @@ const Portfolio = () => {
         <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
           <i className="fab fa-instagram"></i> @that.ville
         </a>
-        <div 
-        className="link-item no-underline" 
-        onClick={() => setShowPopup(true)}
-        >
+        <div className="link-item no-underline" onClick={() => setShowPopup(true)}>
           <i className="fas fa-envelope"></i> Contact me!
         </div>
-
         <div className="link-item no-underline"><i className="fas fa-laptop-code"></i> WebDev</div>
-
         <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk?si=rXJ9ehM2SRyhuR4q2e5Lng&pt=51b8941126ffa488b41a58a20839ef21&pi=zLjMWhj6TUe4F"
-          target="_blank"
-           rel="noopener noreferrer" 
-           className="link-item no-underline"
-           >
+           target="_blank" rel="noopener noreferrer" className="link-item no-underline">
           <i className="fab fa-spotify"></i> Spotify
         </a>
         <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
@@ -124,24 +115,15 @@ const Portfolio = () => {
 
       <div className="buttons-container">
         <div className="transition-box blue-border" onClick={() => setShowAboutPopup(true)}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>
-  Who is Precious?
-</span>
-
+          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>Who is Precious?</span>
         </div>
 
         <div className="transition-box blue-border" onClick={() => navigate("/works")}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>
-  Works
-</span>
-
+          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>Works</span>
         </div>
 
         <div className="transition-box blue-border" onClick={() => setShowPopup(true)}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>
-  CONTACT ME
-</span>
-
+          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>CONTACT ME</span>
         </div>
       </div>
 
@@ -204,7 +186,11 @@ const Portfolio = () => {
           <div className="popup">
             <h2>Who Is Precious?</h2>
             <p className="popup-about-text">
-              Hey, Precious here — a software developer and creative mind. With a strong foundation in React, React Native, and other web technologies, I blend design and code to build digital experiences that speak deeply. always evolving and innovative. Walk with me.
+              Hey, Precious here — a software developer and creative mind. With a strong foundation in React, React Native, and other web technologies, I blend design and code to build digital experiences that speak deeply. Always evolving and innovative. Walk with me....
+              I relocated to Manila to pursue a degree in Information Technology majoring in mobile, web and software development at Trinity University of Asia.
+              I design minimalist, aesthetic websites for creative organizations and individuals, using the power of design to communicate effectively without complexity.
+              Previously worked as a Front-end engineer for a growth-stage start-up "Groo" using React to develop the user interface for users, admin, and mobile site.
+              Also interned at the ICTO at Trinity University of Asia, where I strengthened my skills in React, contributing, building, and maintaining in-house websites.
             </p>
             <div className="popup-buttons">
               <button onClick={() => setShowAboutPopup(false)} className="popup-cancel">Close</button>
