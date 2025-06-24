@@ -143,7 +143,7 @@ const Portfolio = () => {
             <div className="bio-text">
               <h3>WHAT I DO?</h3>
               <p className="image-text">
-                QUICK LOOK THROUGH THIS PAGE IS ENOUGH? OR LET'S WALK AGAIN? , MY FAITH DO NOT COME IN BETWEEN MY WORK...
+                QUICK LOOK THROUGH THIS PAGE IS ENOUGH? OR LET'S WALK AGAIN? , MY FAITH DOES NOT COME BETWEEN MY WORK...
               </p>
             </div>
             <img src={image2} alt="Art 2" className="bio-image" />
