@@ -333,11 +333,23 @@ body {
   border-radius: 10px;
   width: 400px;
   max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .popup h2 {
   color: black;
+}
+
+.popup-about-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-height: 60vh;
+  overflow-y: auto;
+  text-align: justify;
+  word-break: break-word;
+  padding: 10px 0;
 }
 
 .popup form input, .popup form textarea {
@@ -371,6 +383,17 @@ body {
   .bio-image, .bio-video { width: 90%; }
   .bio-text { text-align: center; }
   .links { grid-template-columns: 1fr; text-align: center; }
+  .popup {
+    width: 90%;
+    padding: 20px;
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+  .popup-about-text {
+    font-size: 0.9rem;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
 }
 
 /* Globe and Back Button Mobile Adjustments */

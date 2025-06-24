@@ -37,7 +37,7 @@ const Works = () => {
     <div className="works-container">
       {/* BACK BUTTON TOP LEFT */}
       <button onClick={() => navigate("/")} className="back-button top-left">
-        ←
+        ← 
       </button>
 
       <h1 className="moving-text">MY WORKS...</h1>
