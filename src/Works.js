@@ -40,9 +40,9 @@ const Works = () => {
         ← 
       </button>
 
-      <h1 className="moving-text">MY WORKS...</h1>
+      <h1 className="moving-text">MY PROJECTS...</h1>
        <br />
-              randomly uploaded works...
+             Projects are randomly uploaded...
               <br />
       {/* 3 LINES AFTER HEADER */}
       <div className="header-lines">
