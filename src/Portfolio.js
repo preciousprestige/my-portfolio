@@ -119,7 +119,7 @@ const Portfolio = () => {
         </div>
 
         <div className="transition-box blue-border" onClick={() => navigate("/works")}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>Works</span>
+          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>PROJECTS</span>
         </div>
 
         <div className="transition-box blue-border" onClick={() => setShowPopup(true)}>
