@@ -256,6 +256,32 @@ body {
   }
 }
 
+/* Divider Line (FIXED AND FINAL) */
+.divider-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  margin: 40px 0;
+}
+
+.divider-line hr {
+  width: 80%;
+  height: 2px;
+  background-color: black;
+  border: none;
+  margin: 6px 0;
+}
+
+/* Pagination */
+.pagination-controls {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
 /* Popups */
 .popup-overlay {
   position: fixed;

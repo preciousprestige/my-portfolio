@@ -13,7 +13,6 @@ const quotes = [
   "LIFE IS WHAT HAPPENS WHEN YOU'RE BUSY MAKING OTHER PLANS",
   "THE ONLY LIMIT TO OUR REALIZATION OF TOMORROW IS OUR DOUBTS OF TODAY",
   "DO WHAT YOU CAN, WITH WHAT YOU HAVE, WHERE YOU ARE",
-  "TOMORROW WILL BE BETTER, AND IF IT IS NOT, I'LL SAY IT AGAIN"
 ];
 
 const Portfolio = () => {
@@ -135,7 +134,7 @@ const Portfolio = () => {
             <img src={image1} alt="Art 1" className="bio-image" />
             <div className="bio-text">
               <h3>Tech stack</h3>
-              <p className="image-text">HTML, CSS, JAVASCRIPT, REACT JS, REACT NATIVE, (VUE JS (still working on it)), PHP</p>
+              <p className="image-text">JAVASCRIPT, REACT JS, REACT NATIVE, (VUE JS (still working on it)), PHP</p>
             </div>
           </div>
 
@@ -184,13 +183,13 @@ const Portfolio = () => {
       {showAboutPopup && (
         <div className="popup-overlay">
           <div className="popup">
-            <h2>Who Is Precious?</h2>
+            <h2>WHO IS PRECIOUS</h2>
             <p className="popup-about-text">
               Hey, Precious here — a software developer and creative mind. With a strong foundation in React, React Native, and other web technologies, I blend design and code to build digital experiences that speak deeply. Always evolving and innovative. Walk with me....
               I relocated to Manila to pursue a degree in Information Technology majoring in mobile, web and software development at Trinity University of Asia.
               I design minimalist, aesthetic websites for creative organizations and individuals, using the power of design to communicate effectively without complexity.
-              Previously worked as a Front-end engineer for a growth-stage start-up "Groo" using React to develop the user interface for users, admin, and mobile site.
-              Also interned at the ICTO at Trinity University of Asia, where I strengthened my skills in React, contributing, building, and maintaining in-house websites.
+               interned at the ICTO at Trinity University of Asia, where I strengthened my skills in React, contributing, building, and maintaining in-house websites.
+               worked as a Front-end engineer for a  couple growth-stage start-ups using React to develop the user interface for users, admin, and mobile site.
             </p>
             <div className="popup-buttons">
               <button onClick={() => setShowAboutPopup(false)} className="popup-cancel">Close</button>
