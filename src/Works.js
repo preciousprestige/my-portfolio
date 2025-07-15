@@ -51,21 +51,20 @@ const Works = () => {
   const timers = useRef({});
 
   useEffect(() => {
+    const timersRef = timers.current;
+
     allProjects.forEach((project) => {
       startImageThenVideoLoop(project.id);
     });
 
     return () => {
-      // Cleanup all timeouts on unmount
-      Object.values(timers.current).forEach(clearTimeout);
+      Object.values(timersRef).forEach(clearTimeout);
     };
   }, []);
 
   const startImageThenVideoLoop = (projectId) => {
-    // Step 1: Show image
     setShowVideoMap((prev) => ({ ...prev, [projectId]: false }));
 
-    // Step 2: After 3s, play video
     const timeout = setTimeout(() => {
       setShowVideoMap((prev) => ({ ...prev, [projectId]: true }));
     }, 3000);
@@ -74,7 +73,6 @@ const Works = () => {
   };
 
   const handleVideoEnded = (projectId) => {
-    // Step 3: After video ends, show image and repeat loop
     setShowVideoMap((prev) => ({ ...prev, [projectId]: false }));
 
     const timeout = setTimeout(() => {
@@ -91,7 +89,7 @@ const Works = () => {
 
   return (
     <div className="works-container">
-      <button onClick={() => navigate("/")} className="back-button top-left">
+      <button onClick={() => navigate("/portfolio")} className="back-button top-left">
         ←
       </button>
 

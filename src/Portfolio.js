@@ -1,3 +1,4 @@
+// src/Portfolio.js
 import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -10,9 +11,8 @@ import { useNavigate } from 'react-router-dom';
 
 const quotes = [
   "HAPPINESS EXISTS WHEN YOU DON'T KNOW A THING",
-  "LIFE IS WHAT HAPPENS WHEN YOU'RE BUSY MAKING OTHER PLANS",
-  "THE ONLY LIMIT TO OUR REALIZATION OF TOMORROW IS OUR DOUBTS OF TODAY",
   "DO WHAT YOU CAN, WITH WHAT YOU HAVE, WHERE YOU ARE",
+  "HAVE POWER FOR THE DAY YOU NEED TO SPEAK",
 ];
 
 const Portfolio = () => {
@@ -85,7 +85,6 @@ const Portfolio = () => {
 
   return (
     <div className="container">
-      
       <div className="header">
         <video autoPlay loop muted className="video-header">
           <source src={videoSrc} type="video/mp4" />
@@ -94,7 +93,7 @@ const Portfolio = () => {
 
       <h1 className="moving-text">WALK WITH ME, I'M INEFFABLE...</h1>
 
-      <div className="links">
+      <div className="links social-links">
         <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
           <i className="fab fa-instagram"></i> @that.ville
         </a>
@@ -114,7 +113,7 @@ const Portfolio = () => {
 
       <div className="buttons-container">
         <div className="transition-box blue-border" onClick={() => setShowAboutPopup(true)}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>Who is Precious?</span>
+          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>WHO IS PRECIOUS</span>
         </div>
 
         <div className="transition-box blue-border" onClick={() => navigate("/works")}>
@@ -183,7 +182,7 @@ const Portfolio = () => {
       {showAboutPopup && (
         <div className="popup-overlay">
           <div className="popup">
-            <h2>WHO IS PRECIOUS</h2>
+            <h2 className="who-is-precious-text">WHO IS PRECIOUS</h2>
             <p className="popup-about-text">
               Hey, Precious here — a software developer and creative mind. With a strong foundation in React, React Native, and other web technologies, I blend design and code to build digital experiences that speak deeply. Always evolving and innovative. Walk with me....
               I relocated to Manila to pursue a degree in Information Technology majoring in mobile, web and software development at Trinity University of Asia.
