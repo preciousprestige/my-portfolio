@@ -429,3 +429,275 @@ body {
 .who-is-precious-text {
   text-transform: uppercase;
 }
+/* WHO IS PRECIOUS Page Styling */
+.who-container {
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: #f5f1dc;
+  min-height: 100vh;
+}
+
+.who-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+}
+
+.folder-tooltip {
+  position: absolute;
+  top: 40px;
+  font-size: 0.9rem;
+  color: #333;
+  font-style: italic;
+  animation: fadeTooltip 6s ease-in-out infinite;
+}
+
+@keyframes fadeTooltip {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.emoji-eyes {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: blinkEyes 4s infinite;
+}
+
+@keyframes blinkEyes {
+  0%, 95%, 100% { opacity: 1; }
+  96%, 98% { opacity: 0; }
+  97% { opacity: 0.3; }
+}
+
+.who-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 600px;
+  color: #222;
+}
+
+.blinking-cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink-cursor 1s steps(2, start) infinite;
+}
+
+@keyframes blink-cursor {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.polaroid-img {
+  width: 160px;
+  border: 5px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin: 30px 0;
+  transform: rotate(-3deg);
+}
+
+.divider-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.divider-lines hr {
+  height: 2px;
+  background-color: black;
+  border: none;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.who-card {
+  border: 2px solid black;
+  padding: 30px;
+  margin-top: 60px;
+  background-color: transparent; /* removed white */
+  box-shadow: none; /* removed drop shadow */
+  max-width: 800px;
+  width: 95%;
+  z-index: 2;
+  backdrop-filter: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .who-description {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .folder-tooltip {
+    top: 60px;
+    font-size: 0.75rem;
+  }
+
+  .polaroid-img {
+    width: 120px;
+    margin: 20px 0;
+  }
+}
+
+/* ARCHIVE TAG TOP RIGHT */
+.archive-tag {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  background-color: #fffbe6;
+  color: #000;
+  padding: 6px 12px;
+  border: 2px solid black;
+  border-radius: 6px;
+  z-index: 10;
+  box-shadow: 2px 2px 0px black;
+}
+
+/* DOUBLE DIVIDER STYLE */
+.double-divider {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 400px;
+}
+.double-divider .line {
+  height: 2px;
+  background-color: black;
+  width: 100%;
+}
+
+/* POLAROID TAPE EFFECT */
+.polaroid-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 40px 0;
+}
+
+.tape {
+  width: 40px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  z-index: 2;
+  transform: rotate(-10deg);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.tape-top-left {
+  top: -12px;
+  left: -12px;
+  transform: rotate(-15deg);
+}
+
+.tape-top-right {
+  top: -12px;
+  right: -12px;
+  transform: rotate(15deg);
+}
+
+.polaroid-img {
+  width: 160px;
+  border: 5px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: rotate(-3deg);
+  z-index: 1;
+}
+
+.vinyl-player-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+}
+
+.vinyl-toggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 50%;
+  color: #00ffff;
+  transition: background 0.3s;
+}
+
+.vinyl-toggle:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.vinyl-embed {
+  margin-top: 8px;
+}
+
+.vinyl-disc {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #00ffff;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  animation: spin 6s linear infinite;
+  transition: transform 0.3s ease;
+}
+
+.vinyl-disc:hover {
+  transform: scale(1.1);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.audio-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.location-pin {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #f5f1dc;
+  border: 2px solid black;
+  padding: 8px 12px;
+  font-family: 'Courier New', monospace;
+  animation: fadeInOutPin 3s ease-in-out;
+  z-index: 10;
+  font-size: 0.9rem;
+  box-shadow: 2px 2px 0 #333;
+}
+
+@keyframes fadeInOutPin {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+

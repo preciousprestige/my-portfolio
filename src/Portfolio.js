@@ -1,4 +1,4 @@
-// src/Portfolio.js
+// src/Portfolio.jsx
 import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -7,12 +7,23 @@ import image1 from "./assets/image1.jpg";
 import image2 from "./assets/image2.jpg";
 import image3 from "./assets/image3.jpg";
 import videoSrc from "./assets/video.mp4";
-import { useNavigate } from 'react-router-dom';
+import VinylPlayer from "./VinylPlayer";
+import { useNavigate } from "react-router-dom";
 
 const quotes = [
   "HAPPINESS EXISTS WHEN YOU DON'T KNOW A THING",
   "DO WHAT YOU CAN, WITH WHAT YOU HAVE, WHERE YOU ARE",
   "HAVE POWER FOR THE DAY YOU NEED TO SPEAK",
+];
+
+const fakePins = [
+  "📍 Visitor from 🇵🇭 Manila",
+  "📍 Visitor from 🇳🇬 Abuja",
+  "📍 Visitor from 🇳🇬 Lagos",
+  "📍 Visitor from 🇳🇬 Minna",
+  "📍 Visitor from 🇺🇸 NYC",
+  "📍 Visitor from 🇬🇧 London",
+  "📍 Visitor from 🇫🇷 Paris",
 ];
 
 const Portfolio = () => {
@@ -21,8 +32,17 @@ const Portfolio = () => {
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [showText, setShowText] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
-  const [showAboutPopup, setShowAboutPopup] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [currentPin, setCurrentPin] = useState(null);
+
+  useEffect(() => {
+    const pinInterval = setInterval(() => {
+      const randomPin = fakePins[Math.floor(Math.random() * fakePins.length)];
+      setCurrentPin(randomPin);
+      setTimeout(() => setCurrentPin(null), 3000);
+    }, 7000);
+    return () => clearInterval(pinInterval);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -43,15 +63,14 @@ const Portfolio = () => {
     return () => clearInterval(fadeInterval);
   }, []);
 
-  const getTimeString = (timezone) => {
-    return new Intl.DateTimeFormat("en-US", {
+  const getTimeString = (timezone) =>
+    new Intl.DateTimeFormat("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
       hour12: true,
-      timeZone: timezone
+      timeZone: timezone,
     }).format(time);
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -60,22 +79,25 @@ const Portfolio = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    emailjs.send(
-      "service_p6zcxwd",
-      "template_rxs0qno",
-      {
-        from_name: formData.name,
-        reply_to: formData.email,
-        message: formData.message,
-      },
-      "FOQr-nq-kFsCFN41k"
-    ).then(() => {
-      alert("Message sent successfully!");
-      setFormData({ name: "", email: "", message: "" });
-      setShowPopup(false);
-    }).catch(() => {
-      alert("Failed to send message. Please try again.");
-    });
+    emailjs
+      .send(
+        "service_p6zcxwd",
+        "template_rxs0qno",
+        {
+          from_name: formData.name,
+          reply_to: formData.email,
+          message: formData.message,
+        },
+        "FOQr-nq-kFsCFN41k"
+      )
+      .then(() => {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+        setShowPopup(false);
+      })
+      .catch(() => {
+        alert("Failed to send message. Please try again.");
+      });
   };
 
   const handleCancel = () => {
@@ -85,6 +107,10 @@ const Portfolio = () => {
 
   return (
     <div className="container">
+      {currentPin && <div className="location-pin">{currentPin}</div>}
+
+      <VinylPlayer />
+
       <div className="header">
         <video autoPlay loop muted className="video-header">
           <source src={videoSrc} type="video/mp4" />
@@ -101,8 +127,7 @@ const Portfolio = () => {
           <i className="fas fa-envelope"></i> Contact me!
         </div>
         <div className="link-item no-underline"><i className="fas fa-laptop-code"></i> WebDev</div>
-        <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk?si=rXJ9ehM2SRyhuR4q2e5Lng&pt=51b8941126ffa488b41a58a20839ef21&pi=zLjMWhj6TUe4F"
-           target="_blank" rel="noopener noreferrer" className="link-item no-underline">
+        <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
           <i className="fab fa-spotify"></i> Spotify
         </a>
         <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
@@ -112,16 +137,14 @@ const Portfolio = () => {
       </div>
 
       <div className="buttons-container">
-        <div className="transition-box blue-border" onClick={() => setShowAboutPopup(true)}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>WHO IS PRECIOUS</span>
+        <div className="transition-box blue-border" onClick={() => navigate("/who-is-precious")}>
+          <span className={`transition-text ${showText ? "fade-in" : "fade-out"}`}>WHO IS PRECIOUS</span>
         </div>
-
         <div className="transition-box blue-border" onClick={() => navigate("/works")}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>PROJECTS</span>
+          <span className={`transition-text ${showText ? "fade-in" : "fade-out"}`}>PROJECTS</span>
         </div>
-
         <div className="transition-box blue-border" onClick={() => setShowPopup(true)}>
-          <span className={`transition-text ${showText ? 'fade-in' : 'fade-out'}`}>CONTACT ME</span>
+          <span className={`transition-text ${showText ? "fade-in" : "fade-out"}`}>CONTACT ME</span>
         </div>
       </div>
 
@@ -136,29 +159,24 @@ const Portfolio = () => {
               <p className="image-text">JAVASCRIPT, REACT JS, REACT NATIVE, (VUE JS (still working on it)), PHP</p>
             </div>
           </div>
-
           <div className="bio-content">
             <div className="bio-text">
               <h3>WHAT I DO?</h3>
-              <p className="image-text">
-                QUICK LOOK THROUGH THIS PAGE IS ENOUGH? OR LET'S WALK AGAIN? , MY FAITH DOES NOT COME BETWEEN MY WORK...
-              </p>
+              <p className="image-text">Quick look through this page is enough? Or let's walk again? My faith does not come between my work...</p>
             </div>
             <img src={image2} alt="Art 2" className="bio-image" />
           </div>
-
           <div className="bio-content">
             <img src={image3} alt="Art 3" className="bio-image" />
             <div className="bio-text">
               <h3>BEARING MY YOKE</h3>
               <p className="image-text bounce-text">
-                IT IS GOOD FOR A MAN TO BEAR THE YOKE WHILE HE IS YOUNG (LAMENTATION 3:27)...<br />
-                "FOR MY YOKE IS EASY AND MY BURDEN IS LIGHT.” (Matthew 11:28-30)
+                It is good for a man to bear the yoke while he is young (Lamentations 3:27)...<br />
+                "For my yoke is easy and my burden is light.” (Matthew 11:28-30)
               </p>
             </div>
           </div>
         </div>
-
         <div className="watermark">PRECIOUS</div>
       </div>
 
@@ -175,24 +193,6 @@ const Portfolio = () => {
                 <button type="button" onClick={handleCancel} className="popup-cancel">Cancel</button>
               </div>
             </form>
-          </div>
-        </div>
-      )}
-
-      {showAboutPopup && (
-        <div className="popup-overlay">
-          <div className="popup">
-            <h2 className="who-is-precious-text">WHO IS PRECIOUS</h2>
-            <p className="popup-about-text">
-              Hey, Precious here — a software developer and creative mind. With a strong foundation in React, React Native, and other web technologies, I blend design and code to build digital experiences that speak deeply. Always evolving and innovative. Walk with me....
-              I relocated to Manila to pursue a degree in Information Technology majoring in mobile, web and software development at Trinity University of Asia.
-              I design minimalist, aesthetic websites for creative organizations and individuals, using the power of design to communicate effectively without complexity.
-               interned at the ICTO at Trinity University of Asia, where I strengthened my skills in React, contributing, building, and maintaining in-house websites.
-               worked as a Front-end engineer for a  couple growth-stage start-ups using React to develop the user interface for users, admin, and mobile site.
-            </p>
-            <div className="popup-buttons">
-              <button onClick={() => setShowAboutPopup(false)} className="popup-cancel">Close</button>
-            </div>
           </div>
         </div>
       )}
