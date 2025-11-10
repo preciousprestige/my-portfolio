@@ -701,3 +701,310 @@ body {
   100% { opacity: 0; transform: translateY(10px); }
 }
 
+.projects-folder {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f3e7;
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-family: "Courier New", monospace;
+  box-shadow: 2px 3px 0 #000;
+  overflow: hidden;
+}
+
+.projects-folder:hover {
+  transform: translateY(-2px);
+}
+
+.folder-icon {
+  color: #d4a017;
+  font-size: 1.3rem;
+}
+
+.folder-label {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Subtle, slow sparkle animation */
+.sparkle-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  animation: sparkle-slow 8s linear infinite;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.15),
+    transparent 60%,
+    rgba(255, 255, 255, 0.15)
+  );
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+}
+
+@keyframes sparkle-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* ===============================
+   PROJECTS FOLDER BUTTON
+   =============================== */
+.projects-folder {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f3e7;
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 0.8rem 1.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-family: "Courier New", monospace;
+  box-shadow: 2px 3px 0 #000;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.projects-folder:hover {
+  transform: translateY(-2px);
+}
+
+.folder-icon {
+  color: #d4a017;
+  font-size: 1.3rem;
+}
+
+.folder-label {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Soft, smooth sparkle animation around folder */
+.sparkle-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  animation: sparkle-slow 9s linear infinite;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.12),
+    transparent 60%,
+    rgba(255, 255, 255, 0.12)
+  );
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+  opacity: 0.8;
+}
+
+@keyframes sparkle-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===============================
+   IMAGE + TEXT SIDE-BY-SIDE LAYOUT
+   =============================== */
+.bio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.bio-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+  max-width: 900px;
+  width: 100%;
+}
+
+.bio-image {
+  width: 45%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.bio-text {
+  width: 50%;
+  text-align: left;
+}
+
+.bio-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.image-text {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* ===============================
+   MOBILE RESPONSIVENESS
+   =============================== */
+@media (max-width: 768px) {
+  .bio-content {
+    flex-direction: row; /* still side-by-side, just smaller */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .bio-image {
+    width: 38%;
+  }
+
+  .bio-text {
+    width: 58%;
+  }
+
+  .bio-text h3 {
+    font-size: 1.1rem;
+  }
+
+  .image-text {
+    font-size: 0.9rem;
+  }
+
+  .projects-folder {
+    padding: 0.6rem 1.1rem;
+  }
+
+  .folder-icon {
+    font-size: 1.1rem;
+  }
+
+  .folder-label {
+    font-size: 0.95rem;
+  }
+}
+
+/* ===============================
+   FOOTER + TIMESTAMP
+   =============================== */
+.footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.timestamp {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+/* ===============================
+   PROJECTS FOLDER BUTTON
+   =============================== */
+.project-folder-btn {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.folder-top {
+  width: 80px;
+  height: 12px;
+  background: #d6c186;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin: 0 auto -4px;
+  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.folder-body {
+  position: relative;
+  background: linear-gradient(180deg, #f4e4b0, #d3b464);
+  border: 2px solid #a48a3f;
+  border-radius: 0 0 10px 10px;
+  width: 140px;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 4px 0 #000;
+  overflow: hidden;
+}
+
+.folder-icon {
+  color: #c8a32e;
+  font-size: 1.3rem;
+}
+
+.folder-label {
+  font-weight: 600;
+  margin-top: 4px;
+  letter-spacing: 1px;
+  color: #2b2000;
+}
+
+/* Sparkle moving around the folder edges */
+.sparkle-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 0 10px 10px;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255, 255, 255, 0.3) 90deg,
+    transparent 180deg,
+    rgba(255, 255, 255, 0.25) 270deg,
+    transparent 360deg
+  );
+  animation: sparkle-rotate 10s linear infinite;
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+}
+
+@keyframes sparkle-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .folder-body {
+    width: 110px;
+    height: 55px;
+  }
+
+  .folder-top {
+    width: 60px;
+    height: 10px;
+  }
+
+  .folder-label {
+    font-size: 0.9rem;
+  }
+}

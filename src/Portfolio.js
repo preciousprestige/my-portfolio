@@ -5,26 +5,15 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./style.css";
 import image1 from "./assets/image1.jpg";
 import image2 from "./assets/image2.jpg";
-import image3 from "./assets/image3.jpg";
 import videoSrc from "./assets/video.mp4";
 import VinylPlayer from "./VinylPlayer";
 import { useNavigate } from "react-router-dom";
+import { FaFolder } from "react-icons/fa"; // folder icon
 
 const quotes = [
-  "HAPPINESS EXISTS WHEN YOU DON'T KNOW A THING",
-  "DO WHAT YOU CAN, WITH WHAT YOU HAVE, WHERE YOU ARE",
   "HAVE POWER FOR THE DAY YOU NEED TO SPEAK",
 ];
 
-const fakePins = [
-  "📍 Visitor from 🇵🇭 Manila",
-  "📍 Visitor from 🇳🇬 Abuja",
-  "📍 Visitor from 🇳🇬 Lagos",
-  "📍 Visitor from 🇳🇬 Minna",
-  "📍 Visitor from 🇺🇸 NYC",
-  "📍 Visitor from 🇬🇧 London",
-  "📍 Visitor from 🇫🇷 Paris",
-];
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -34,15 +23,17 @@ const Portfolio = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [currentPin, setCurrentPin] = useState(null);
+  const [typedText, setTypedText] = useState("");
+  const fullText = "Hi, I’m Precious — I build poetic interfaces";
 
-  useEffect(() => {
-    const pinInterval = setInterval(() => {
-      const randomPin = fakePins[Math.floor(Math.random() * fakePins.length)];
-      setCurrentPin(randomPin);
+ // useEffect(() => {
+  //  const pinInterval = setInterval(() => {
+ //     const randomPin = fakePins[Math.floor(Math.random() * fakePins.length)];
+ //     setCurrentPin(randomPin);
       setTimeout(() => setCurrentPin(null), 3000);
-    }, 7000);
-    return () => clearInterval(pinInterval);
-  }, []);
+  //  }, 7000);
+ //   return () => clearInterval(pinInterval);
+ // }, []);
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -61,6 +52,23 @@ const Portfolio = () => {
       setShowText((prev) => !prev);
     }, 2000);
     return () => clearInterval(fadeInterval);
+  }, []);
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      setTypedText((prev) => {
+        if (index < fullText.length) {
+          const updated = prev + fullText[index];
+          index++;
+          return updated;
+        } else {
+          clearInterval(interval);
+          return prev;
+        }
+      });
+    }, 50);
+    return () => clearInterval(interval);
   }, []);
 
   const getTimeString = (timezone) =>
@@ -115,68 +123,100 @@ const Portfolio = () => {
         <video autoPlay loop muted className="video-header">
           <source src={videoSrc} type="video/mp4" />
         </video>
+        <div className="typewriter-text">
+          {typedText}
+          <span className="blinking-cursor">|</span>
+        </div>
       </div>
 
-      <h1 className="moving-text">WALK WITH ME, I'M INEFFABLE...</h1>
+      <h1 className="moving-text">walk with me...</h1>
 
+      {/* Social Icons */}
       <div className="links social-links">
-        <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
+        <a
+          href="https://www.instagram.com/that.ville/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-item no-underline"
+        >
           <i className="fab fa-instagram"></i> @that.ville
         </a>
         <div className="link-item no-underline" onClick={() => setShowPopup(true)}>
           <i className="fas fa-envelope"></i> Contact me!
         </div>
-        <div className="link-item no-underline"><i className="fas fa-laptop-code"></i> WebDev</div>
-        <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
+        <div className="link-item no-underline">
+          <i className="fas fa-laptop-code"></i> WebDev
+        </div>
+        <a
+          href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-item no-underline"
+        >
           <i className="fab fa-spotify"></i> Spotify
         </a>
-        <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="link-item no-underline">
+        <a
+          href="https://github.com/preciousprestige"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-item no-underline"
+        >
           <i className="fab fa-github"></i> Github
         </a>
-        <div className="link-item no-underline"><i className="fas fa-map-marker-alt"></i> MNL/ABJ</div>
+        <div className="link-item no-underline">
+          <i className="fas fa-map-marker-alt"></i> MNL/ABJ
+        </div>
       </div>
 
+      {/* Quotes above folder */}
+      <p className={`quote ${showText ? "fade-in" : "fade-out"}`}>
+        {quotes[quoteIndex]}
+      </p>
+
+      {/* Folder buttons */}
       <div className="buttons-container">
-        <div className="transition-box blue-border" onClick={() => navigate("/who-is-precious")}>
-          <span className={`transition-text ${showText ? "fade-in" : "fade-out"}`}>WHO IS PRECIOUS</span>
-        </div>
-        <div className="transition-box blue-border" onClick={() => navigate("/works")}>
-          <span className={`transition-text ${showText ? "fade-in" : "fade-out"}`}>PROJECTS</span>
-        </div>
-        <div className="transition-box blue-border" onClick={() => setShowPopup(true)}>
-          <span className={`transition-text ${showText ? "fade-in" : "fade-out"}`}>CONTACT ME</span>
-        </div>
-      </div>
+  <div
+    className="project-folder-btn"
+    onClick={() => navigate("/works")}
+  >
+    <div className="folder-top"></div>
+    <div className="folder-body">
+      <FaFolder className="folder-icon" />
+      <span className="folder-label">Projects</span>
+      <span className="sparkle-border"></span>
+    </div>
+  </div>
+</div>
 
       <hr className="section-divider" />
 
+      {/* Bio section */}
       <div className="content">
         <div className="bio-container">
           <div className="bio-content">
             <img src={image1} alt="Art 1" className="bio-image" />
             <div className="bio-text">
               <h3>Tech stack</h3>
-              <p className="image-text">JAVASCRIPT, REACT JS, REACT NATIVE, (VUE JS (still working on it)), PHP</p>
+              <p className="image-text">
+                JAVASCRIPT, REACT JS, REACT NATIVE, VUE JS, MONGO DB, POSTMAN,PHP, GITHUB.
+              </p>
             </div>
           </div>
+
           <div className="bio-content">
-            <div className="bio-text">
-              <h3>WHAT I DO?</h3>
-              <p className="image-text">Quick look through this page is enough? Or let's walk again? My faith does not come between my work...</p>
-            </div>
-            <img src={image2} alt="Art 2" className="bio-image" />
-          </div>
-          <div className="bio-content">
-            <img src={image3} alt="Art 3" className="bio-image" />
+            <img src={image2} alt="Merged Art" className="bio-image" />
             <div className="bio-text">
               <h3>BEARING MY YOKE</h3>
-              <p className="image-text bounce-text">
-                It is good for a man to bear the yoke while he is young (Lamentations 3:27)...<br />
-                "For my yoke is easy and my burden is light.” (Matthew 11:28-30)
+              <p className="image-text">
+                Lam 3:27<br />
+                My faith doesn’t come between my work — it inspires it.
+                <br />
+                Mat 11:28
               </p>
             </div>
           </div>
         </div>
+
         <div className="watermark">PRECIOUS</div>
       </div>
 
@@ -185,12 +225,43 @@ const Portfolio = () => {
           <div className="popup-form">
             <h2>Contact Me</h2>
             <form onSubmit={handleSend}>
-              <input type="text" name="name" placeholder="Name" className="popup-input" value={formData.name} onChange={handleInputChange} required />
-              <input type="email" name="email" placeholder="Email" className="popup-input" value={formData.email} onChange={handleInputChange} required />
-              <textarea name="message" placeholder="Message" className="popup-textarea" value={formData.message} onChange={handleInputChange} required />
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                className="popup-input"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                className="popup-input"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                className="popup-textarea"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              />
               <div className="popup-buttons">
-                <button type="submit" className="popup-send">Send</button>
-                <button type="button" onClick={handleCancel} className="popup-cancel">Cancel</button>
+                <button type="submit" className="popup-send">
+                  Send
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCancel}
+                  className="popup-cancel"
+                >
+                  Cancel
+                </button>
               </div>
             </form>
           </div>
@@ -199,9 +270,8 @@ const Portfolio = () => {
 
       <footer className="footer">
         <span className="timestamp">
-          Manila: {getTimeString("Asia/Manila")} | Abuja: {getTimeString("Africa/Lagos")}
+          MANILA {getTimeString("Asia/Manila")} | ABUJA {getTimeString("Africa/Lagos")}
         </span>
-        <p className="quote">{quotes[quoteIndex]}</p>
       </footer>
     </div>
   );
