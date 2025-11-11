@@ -8,12 +8,8 @@ import image2 from "./assets/image2.jpg";
 import videoSrc from "./assets/video.mp4";
 import VinylPlayer from "./VinylPlayer";
 import { useNavigate } from "react-router-dom";
-import { FaFolder } from "react-icons/fa"; // folder icon
 
-const quotes = [
-  "HAVE POWER FOR THE DAY YOU NEED TO SPEAK",
-];
-
+const quotes = ["BUILD WITH ME"];
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -22,18 +18,9 @@ const Portfolio = () => {
   const [showText, setShowText] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [currentPin, setCurrentPin] = useState(null);
+  const [currentPin] = useState(null);
   const [typedText, setTypedText] = useState("");
-  const fullText = "Hi, I’m Precious — I build poetic interfaces";
-
- // useEffect(() => {
-  //  const pinInterval = setInterval(() => {
- //     const randomPin = fakePins[Math.floor(Math.random() * fakePins.length)];
- //     setCurrentPin(randomPin);
-      setTimeout(() => setCurrentPin(null), 3000);
-  //  }, 7000);
- //   return () => clearInterval(pinInterval);
- // }, []);
+  const fullText = "Hi, I'm Precious — I build poetic interfaces";
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -168,25 +155,39 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Quotes above folder */}
+      {/* Quotes above text line */}
       <p className={`quote ${showText ? "fade-in" : "fade-out"}`}>
         {quotes[quoteIndex]}
       </p>
 
-      {/* Folder buttons */}
-      <div className="buttons-container">
-  <div
-    className="project-folder-btn"
-    onClick={() => navigate("/works")}
-  >
-    <div className="folder-top"></div>
-    <div className="folder-body">
-      <FaFolder className="folder-icon" />
-      <span className="folder-label">Projects</span>
-      <span className="sparkle-border"></span>
-    </div>
-  </div>
-</div>
+      {/* Text line (Precious | Projects📁) */}
+      <div
+        className="buttons-container"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          maxWidth: "500px",
+          margin: "0 auto",
+        }}
+      >
+        <p
+          onClick={() => navigate("/who-is-precious")}
+          className="text-lg font-semibold text-white cursor-pointer transition-all duration-300 hover:tracking-wider hover:text-pink-400 hover:drop-shadow-[0_0_10px_rgba(255,192,203,0.7)]"
+          style={{ margin: 0 }}
+        >
+          precious?
+        </p>
+
+        <p
+          onClick={() => navigate("/works")}
+          className="text-lg font-semibold text-white cursor-pointer transition-all duration-300 hover:tracking-wider hover:text-pink-400 hover:drop-shadow-[0_0_10px_rgba(255,192,203,0.7)]"
+          style={{ margin: 0 }}
+        >
+          projects 📁
+        </p>
+      </div>
 
       <hr className="section-divider" />
 
@@ -209,7 +210,7 @@ const Portfolio = () => {
               <h3>BEARING MY YOKE</h3>
               <p className="image-text">
                 Lam 3:27<br />
-                My faith doesn’t come between my work — it inspires it.
+                My faith doesn't come between my work — it inspires it.
                 <br />
                 Mat 11:28
               </p>
@@ -255,11 +256,7 @@ const Portfolio = () => {
                 <button type="submit" className="popup-send">
                   Send
                 </button>
-                <button
-                  type="button"
-                  onClick={handleCancel}
-                  className="popup-cancel"
-                >
+                <button type="button" onClick={handleCancel} className="popup-cancel">
                   Cancel
                 </button>
               </div>

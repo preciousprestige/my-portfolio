@@ -44,8 +44,6 @@ const allProjects = [
 
 const Works = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 3;
   const [showVideoMap, setShowVideoMap] = useState({});
   const videoRefs = useRef({});
   const timers = useRef({});
@@ -82,11 +80,6 @@ const Works = () => {
     timers.current[projectId] = timeout;
   };
 
-  const indexOfLast = currentPage * projectsPerPage;
-  const indexOfFirst = indexOfLast - projectsPerPage;
-  const currentProjects = allProjects.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(allProjects.length / projectsPerPage);
-
   return (
     <div className="works-container">
       <button onClick={() => navigate("/portfolio")} className="back-button top-left">
@@ -95,7 +88,7 @@ const Works = () => {
 
       <h1 className="moving-text">MY PROJECTS...</h1>
       <br />
-      Projects are randomly uploaded...
+      SELECTED PROJECTS...
       <br />
 
       <div className="header-lines">
@@ -104,13 +97,11 @@ const Works = () => {
         <hr />
       </div>
 
-      {currentProjects.map((project, idx) => {
-        const globalIndex = indexOfFirst + idx;
-        const isLastProjectOverall = globalIndex === allProjects.length - 1;
-
-        return (
-          <div key={project.id} className="bio-container">
-            <div className="bio-content">
+      {/* Horizontal Scroll Container */}
+      <div className="horizontal-scroll-wrapper">
+        {allProjects.map((project, idx) => (
+          <React.Fragment key={project.id}>
+            <div className="project-card">
               <div className="media-container">
                 {showVideoMap[project.id] ? (
                   <video
@@ -128,14 +119,14 @@ const Works = () => {
                   <img
                     src={project.image}
                     alt={`Work ${project.id}`}
-                    className="bio-image"
+                    className="project-image"
                   />
                 )}
               </div>
 
-              <div className="bio-text">
+              <div className="project-text">
                 <h3>{project.title}</h3>
-                <p className="image-text moving-description">
+                <p className="project-description">
                   {project.description}
                   <br />
                   {project.tech}
@@ -152,34 +143,12 @@ const Works = () => {
               </div>
             </div>
 
-            {!isLastProjectOverall && (
-              <div className="divider-line">
-                <hr />
-                <hr />
-                <hr />
-              </div>
+            {/* Vertical Divider Line (not after last project) */}
+            {idx < allProjects.length - 1 && (
+              <div className="vertical-divider"></div>
             )}
-          </div>
-        );
-      })}
-
-      <div className="pagination-controls">
-        {currentPage > 1 && (
-          <button
-            onClick={() => setCurrentPage(currentPage - 1)}
-            className="transition-box"
-          >
-            &lt;
-          </button>
-        )}
-        {currentPage < totalPages && (
-          <button
-            onClick={() => setCurrentPage(currentPage + 1)}
-            className="transition-box"
-          >
-            &gt;
-          </button>
-        )}
+          </React.Fragment>
+        ))}
       </div>
 
       <img src={globeImage} alt="spinning globe" className="floating-globe" />
