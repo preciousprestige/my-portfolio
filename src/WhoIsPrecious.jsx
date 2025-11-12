@@ -33,7 +33,8 @@ export default function WhoIsPrecious() {
               <strong>Hey, Precious here...</strong>
             </p>
             <p>a software developer mainly. React and React Native majorly.</p>
-            <p>Always evolving and innovative. Walk with me....</p>
+            <p>I have the ideal tools for developing JavaScript and react applications, and I can definitely work without them to produce durable solutions that are designed for growth – performance is one, scalability another for top objectives on my radar.
+</p>
             <p></p>
             <p></p>
             <span className="blinking-cursor">|</span>

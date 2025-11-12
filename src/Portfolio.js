@@ -132,7 +132,7 @@ const Portfolio = () => {
           <i className="fas fa-envelope"></i> Contact me!
         </div>
         <div className="link-item no-underline">
-          <i className="fas fa-laptop-code"></i> WebDev
+          <i className="fas fa-laptop-code"></i> Software dev
         </div>
         <a
           href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk"
@@ -151,7 +151,7 @@ const Portfolio = () => {
           <i className="fab fa-github"></i> Github
         </a>
         <div className="link-item no-underline">
-          <i className="fas fa-map-marker-alt"></i> MNL/ABJ
+          <i className="fas fa-map-marker-alt"></i> 
         </div>
       </div>
 
@@ -209,10 +209,10 @@ const Portfolio = () => {
             <div className="bio-text">
               <h3>BEARING MY YOKE</h3>
               <p className="image-text">
-                Lam 3:27<br />
-                My faith doesn't come between my work — it inspires it.
+                Heavy lifting<br />
+                what seems hard and far is made easy and close by...
                 <br />
-                Mat 11:28
+                ...
               </p>
             </div>
           </div>
