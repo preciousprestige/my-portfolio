@@ -11,7 +11,7 @@ import './style.css';
 
 function App() {
   return (
-  <Router basename="/my-portfolio">
+  <Router basename={process.env.PUBLIC_URL}>
   <Routes>
    <Route path="/" element={<Intro />} />
    <Route path="/who-is-precious" element={<WhoIsPrecious />} />
