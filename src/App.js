@@ -8,6 +8,7 @@ import Works from './Works';
 import VinylPlayer from './VinylPlayer';
 
 import './style.css';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
     <Route path="/works" element={<Works />} />
   </Routes>
   <VinylPlayer />
+      <Analytics />
 </Router>
 
   );
