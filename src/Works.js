@@ -41,40 +41,12 @@ const allProjects = [
   },
 ];
 
-// ── Replace null with imported assets when ready ──────────────────────────────
-// e.g: import newVid1 from "./assets/new-vid1.mp4";
-//      import newImg1 from "./assets/new-img1.jpg";
 const newProjects = [
-  {
-    id: "n1",
-    title: "PROJECT TITLE",
-    video: null,
-    image: null,
-    description: "Project description goes here...",
-    tech: "Built with ...",
-    link: "#",
-  },
-  {
-    id: "n2",
-    title: "PROJECT TITLE",
-    video: null,
-    image: null,
-    description: "Project description goes here...",
-    tech: "Built with ...",
-    link: "#",
-  },
-  {
-    id: "n3",
-    title: "PROJECT TITLE",
-    video: null,
-    image: null,
-    description: "Project description goes here...",
-    tech: "Built with ...",
-    link: "#",
-  },
+  { id: "n1", title: "PROJECT TITLE", video: null, image: null, description: "Project description goes here...", tech: "Built with ...", link: "#" },
+  { id: "n2", title: "PROJECT TITLE", video: null, image: null, description: "Project description goes here...", tech: "Built with ...", link: "#" },
+  { id: "n3", title: "PROJECT TITLE", video: null, image: null, description: "Project description goes here...", tech: "Built with ...", link: "#" },
 ];
 
-// ── Reusable horizontally-scrollable project row with image→video loop ────────
 const ProjectRow = ({ projects, sectionId }) => {
   const [showVideoMap, setShowVideoMap] = useState({});
   const videoRefs = useRef({});
@@ -121,11 +93,7 @@ const ProjectRow = ({ projects, sectionId }) => {
                     your browser does not support the video tag
                   </video>
                 ) : (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="project-image"
-                  />
+                  <img src={project.image} alt={project.title} className="project-image" />
                 )
               ) : (
                 <div className="new-media-placeholder">
@@ -135,7 +103,6 @@ const ProjectRow = ({ projects, sectionId }) => {
                 </div>
               )}
             </div>
-
             <div className="project-text">
               <h3>{project.title}</h3>
               <p className="project-description">
@@ -143,28 +110,19 @@ const ProjectRow = ({ projects, sectionId }) => {
                 <br />
                 {project.tech}
                 <br />
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="here-link"
-                >
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="here-link">
                   HERE
                 </a>
               </p>
             </div>
           </div>
-
-          {idx < projects.length - 1 && (
-            <div className="vertical-divider"></div>
-          )}
+          {idx < projects.length - 1 && <div className="vertical-divider"></div>}
         </React.Fragment>
       ))}
     </div>
   );
 };
 
-// ── Main component ────────────────────────────────────────────────────────────
 const Works = () => {
   const navigate = useNavigate();
 
@@ -174,28 +132,22 @@ const Works = () => {
         ←
       </button>
 
-      {/* ── Section 1: Selected Projects ── */}
       <h1 className="moving-text">MY PROJECTS...</h1>
       <br />
       SELECTED PROJECTS...
       <br />
       <div className="header-lines">
-        <hr />
-        <hr />
-        <hr />
+        <hr /><hr /><hr />
       </div>
 
       <ProjectRow projects={allProjects} sectionId="s1" />
 
-      {/* ── Section 2: E Commerce / 2D & 3D ── */}
       <h1 className="moving-text">E COMMERCE / 2D & 3D PROJECTS...</h1>
       <br />
       SELECTED PROJECTS...
       <br />
       <div className="header-lines">
-        <hr />
-        <hr />
-        <hr />
+        <hr /><hr /><hr />
       </div>
 
       <ProjectRow projects={newProjects} sectionId="s2" />
