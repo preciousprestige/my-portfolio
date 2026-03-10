@@ -10,6 +10,8 @@ import simbaconsult from "./assets/simbaconsult .mp4";
 import simbaImage from "./assets/simbaImg.jpg";
 import sanctifiedVideo from "./assets/sanctified.mp4";
 import sanctifiedImage from "./assets/sanctified.jpg";
+import TEWImg from "./assets/TEW img.png";
+import TEWVid from "./assets/TEW.mp4";
 
 const allProjects = [
   {
@@ -42,9 +44,33 @@ const allProjects = [
 ];
 
 const newProjects = [
-  { id: "n1", title: "PROJECT TITLE", video: null, image: null, description: "Project description goes here...", tech: "Built with ...", link: "#" },
-  { id: "n2", title: "PROJECT TITLE", video: null, image: null, description: "Project description goes here...", tech: "Built with ...", link: "#" },
-  { id: "n3", title: "PROJECT TITLE", video: null, image: null, description: "Project description goes here...", tech: "Built with ...", link: "#" },
+  {
+    id: "n1",
+    title: "THE EXQUISITE WOMAN",
+    video: TEWVid,
+    image: TEWImg,
+    description: "Curated fashion for the modern woman. Elegant, bold, and uniquely you.",
+    tech: "Built with React.js",
+    link: "https://tew-eight.vercel.app/",
+  },
+  {
+    id: "n2",
+    title: "HALL OF FAME",
+    video: null,
+    image: null, // add import once zero-limit file is in assets
+    description: "2D design depicting the Wakanda Forever master dog studio.",
+    tech: "Built with React.js",
+    link: "#",
+  },
+  {
+    id: "n3",
+    title: "PROJECT TITLE",
+    video: null,
+    image: null,
+    description: "Project description goes here...",
+    tech: "Built with ...",
+    link: "#",
+  },
 ];
 
 const ProjectRow = ({ projects, sectionId }) => {
@@ -95,6 +121,8 @@ const ProjectRow = ({ projects, sectionId }) => {
                 ) : (
                   <img src={project.image} alt={project.title} className="project-image" />
                 )
+              ) : project.image ? (
+                <img src={project.image} alt={project.title} className="project-image" />
               ) : (
                 <div className="new-media-placeholder">
                   <span style={{ color: "#aaa", fontSize: "13px", fontFamily: "monospace" }}>
