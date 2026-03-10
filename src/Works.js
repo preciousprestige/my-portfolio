@@ -12,6 +12,7 @@ import sanctifiedVideo from "./assets/sanctified.mp4";
 import sanctifiedImage from "./assets/sanctified.jpg";
 import TEWImg from "./assets/TEW img.png";
 import TEWVid from "./assets/TEW.mp4";
+import zeroLimit from "./assets/zero-limit.png";
 
 const allProjects = [
   {
@@ -57,7 +58,7 @@ const newProjects = [
     id: "n2",
     title: "HALL OF FAME",
     video: null,
-    image: null, // add import once zero-limit file is in assets
+    image: zeroLimit,
     description: "2D design depicting the Wakanda Forever master dog studio.",
     tech: "Built with React.js",
     link: "#",
