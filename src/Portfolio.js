@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./style.css";
-import image1 from "./assets/image1.jpg";
-import image2 from "./assets/image2.jpg";
 import videoSrc from "./assets/video.mp4";
 import VinylPlayer from "./VinylPlayer";
 import { useNavigate } from "react-router-dom";
@@ -119,13 +117,11 @@ const Portfolio = () => {
       {/* Moving text */}
       <h1 className="moving-text">walk with me...</h1>
 
-      {/* ── Two-column editorial layout ── */}
+      {/* ── Editorial layout ── */}
       <div className="editorial-layout">
 
-        {/* LEFT COLUMN */}
+        {/* LEFT — socials */}
         <div className="editorial-left">
-
-          {/* Social links */}
           <div className="editorial-block">
             <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="editorial-link">
               <i className="fab fa-instagram"></i> Instagram
@@ -133,48 +129,18 @@ const Portfolio = () => {
             <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk" target="_blank" rel="noopener noreferrer" className="editorial-link">
               <i className="fab fa-spotify"></i> Spotify
             </a>
-            <div className="editorial-link" style={{ cursor: "default" }}>
+            <div className="editorial-link">
               <i className="fas fa-laptop-code"></i> Software dev
             </div>
           </div>
 
-          {/* Nav */}
-          <div className="editorial-block editorial-nav">
-            <span onClick={() => navigate("/who-is-precious")} className="editorial-nav-link">precious?</span>
-            <span onClick={() => navigate("/works")} className="editorial-nav-link">see works</span>
-          </div>
-
-          {/* Bio image 1 */}
+          {/* Bearing my yoke */}
           <div className="editorial-block">
-            <img src={image1} alt="Art 1" className="editorial-img" />
-          </div>
-
-          {/* Bio image 2 */}
-          <div className="editorial-block">
-            <img src={image2} alt="Art 2" className="editorial-img" />
-          </div>
-
-        </div>
-
-        {/* RIGHT COLUMN */}
-        <div className="editorial-right">
-
-          {/* Contact + GitHub */}
-          <div className="editorial-block editorial-row">
-            <div onClick={() => setShowPopup(true)} className="editorial-link" style={{ cursor: "pointer" }}>
-              <i className="fas fa-envelope"></i> Email me!
-            </div>
-            <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="editorial-link">
-              <i className="fab fa-github"></i> GITHUB
-            </a>
-          </div>
-
-          {/* Quote */}
-          <div className="editorial-block">
-            <p className="editorial-tagline">Building between art and technology.</p>
-            <p className="editorial-tagline">Faith, rhythm, and repetition.</p>
-            <p className={`editorial-quote ${showText ? "fade-in" : "fade-out"}`}>
-              {quotes[quoteIndex]}
+            <h3 className="editorial-label">BEARING MY YOKE</h3>
+            <p className="editorial-body image-text">
+              Heavy lifting<br />
+              what seems hard and far is made easy and close by...<br />
+              ...
             </p>
           </div>
 
@@ -203,15 +169,34 @@ const Portfolio = () => {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Bearing my yoke */}
+        {/* RIGHT — bio + nav */}
+        <div className="editorial-right">
+
+          {/* tagline + quote */}
           <div className="editorial-block">
-            <h3 className="editorial-label">BEARING MY YOKE</h3>
-            <p className="editorial-body image-text">
-              Heavy lifting<br />
-              what seems hard and far is made easy and close by...<br />
-              ...
+            <p className="editorial-tagline">Building between art and technology.</p>
+            <p className="editorial-tagline">Faith, rhythm, and repetition.</p>
+            <p className={`editorial-quote ${showText ? "fade-in" : "fade-out"}`}>
+              {quotes[quoteIndex]}
             </p>
+          </div>
+
+          {/* Contact + GitHub */}
+          <div className="editorial-block editorial-row">
+            <div onClick={() => setShowPopup(true)} className="editorial-link" style={{ cursor: "pointer" }}>
+              <i className="fas fa-envelope"></i> Email me!
+            </div>
+            <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="editorial-link">
+              <i className="fab fa-github"></i> GITHUB
+            </a>
+          </div>
+
+          {/* Nav */}
+          <div className="editorial-block editorial-nav">
+            <span onClick={() => navigate("/who-is-precious")} className="editorial-nav-link">precious?</span>
+            <span onClick={() => navigate("/works")} className="editorial-nav-link">see works</span>
           </div>
 
         </div>
