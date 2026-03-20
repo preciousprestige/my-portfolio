@@ -103,9 +103,9 @@ const Portfolio = () => {
   return (
     <div className="container">
       {currentPin && <div className="location-pin">{currentPin}</div>}
-
       <VinylPlayer />
 
+      {/* Full-width video header */}
       <div className="header">
         <video autoPlay loop muted className="video-header">
           <source src={videoSrc} type="video/mp4" />
@@ -116,174 +116,124 @@ const Portfolio = () => {
         </div>
       </div>
 
+      {/* Moving text */}
       <h1 className="moving-text">walk with me...</h1>
 
-      {/* Social Icons */}
-      <div className="links social-links">
-        <a
-          href="https://www.instagram.com/that.ville/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-item no-underline"
-        >
-          <i className="fab fa-instagram"></i> @that.ville
-        </a>
-        <div className="link-item no-underline" onClick={() => setShowPopup(true)}>
-          <i className="fas fa-envelope"></i> Contact me!
-        </div>
-        <div className="link-item no-underline">
-          <i className="fas fa-laptop-code"></i> Software dev
-        </div>
-        <a
-          href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-item no-underline"
-        >
-          <i className="fab fa-spotify"></i> Spotify
-        </a>
-        <a
-          href="https://github.com/preciousprestige"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-item no-underline"
-        >
-          <i className="fab fa-github"></i> Github
-        </a>
-        <div className="link-item no-underline">
-          <i className="fas fa-map-marker-alt"></i> 
-        </div>
-      </div>
+      {/* ── Two-column editorial layout ── */}
+      <div className="editorial-layout">
 
-      {/* Quotes above text line */}
-      <p className={`quote ${showText ? "fade-in" : "fade-out"}`}>
-        {quotes[quoteIndex]}
-      </p>
+        {/* LEFT COLUMN */}
+        <div className="editorial-left">
 
-      {/* Text line (Precious | Projects📁) */}
-      <div
-        className="buttons-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-          maxWidth: "500px",
-          margin: "0 auto",
-        }}
-      >
-        <p
-          onClick={() => navigate("/who-is-precious")}
-          className="text-lg font-semibold text-white cursor-pointer transition-all duration-300 hover:tracking-wider hover:text-pink-400 hover:drop-shadow-[0_0_10px_rgba(255,192,203,0.7)]"
-          style={{ margin: 0 }}
-        >
-          precious?
-        </p>
-
-        <p
-          onClick={() => navigate("/works")}
-          className="text-lg font-semibold text-white cursor-pointer transition-all duration-300 hover:tracking-wider hover:text-pink-400 hover:drop-shadow-[0_0_10px_rgba(255,192,203,0.7)]"
-          style={{ margin: 0 }}
-        >
-          projects 📁
-        </p>
-      </div>
-
-      <hr className="section-divider" />
-
-      {/* Bio section */}
-      <div className="content">
-        <div className="bio-container">
-          <div className="bio-content">
-            <img src={image1} alt="Art 1" className="bio-image" />
-            <div className="bio-text">
-  <h3>Tech stack</h3>
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginTop: "10px" }}>
-    {[
-      { label: "JAVASCRIPT", bg: "#f7df1e", color: "#000" },
-      { label: "REACT JS", bg: "#61dafb", color: "#000" },
-      { label: "REACT NATIVE", bg: "#20232a", color: "#61dafb" },
-      { label: "VUE JS", bg: "#42b883", color: "#fff" },
-      { label: "MONGO DB", bg: "#4db33d", color: "#fff" },
-      { label: "POSTMAN", bg: "#ff6c37", color: "#fff" },
-      { label: "PHP", bg: "#8993be", color: "#fff" },
-      { label: "GITHUB", bg: "#333", color: "#fff" },
-    ].map(({ label, bg, color }) => (
-      <span
-        key={label}
-        style={{
-          backgroundColor: bg,
-          color: color,
-          padding: "4px 10px",
-          borderRadius: "6px",
-          fontSize: "11px",
-          fontWeight: "bold",
-          fontFamily: "monospace",
-          letterSpacing: "0.5px",
-        }}
-      >
-        {label}
-      </span>
-    ))}
-  </div>
-</div>
-          </div>
-
-          <div className="bio-content">
-            <img src={image2} alt="Merged Art" className="bio-image" />
-            <div className="bio-text">
-              <h3>BEARING MY YOKE</h3>
-              <p className="image-text">
-                Heavy lifting<br />
-                what seems hard and far is made easy and close by...
-                <br />
-                ...
-              </p>
+          {/* Social links */}
+          <div className="editorial-block">
+            <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="editorial-link">
+              <i className="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk" target="_blank" rel="noopener noreferrer" className="editorial-link">
+              <i className="fab fa-spotify"></i> Spotify
+            </a>
+            <div className="editorial-link" style={{ cursor: "default" }}>
+              <i className="fas fa-laptop-code"></i> Software dev
             </div>
           </div>
+
+          {/* Nav */}
+          <div className="editorial-block editorial-nav">
+            <span onClick={() => navigate("/who-is-precious")} className="editorial-nav-link">precious?</span>
+            <span onClick={() => navigate("/works")} className="editorial-nav-link">see works</span>
+          </div>
+
+          {/* Bio image 1 */}
+          <div className="editorial-block">
+            <img src={image1} alt="Art 1" className="editorial-img" />
+          </div>
+
+          {/* Bio image 2 */}
+          <div className="editorial-block">
+            <img src={image2} alt="Art 2" className="editorial-img" />
+          </div>
+
         </div>
 
-        <div className="watermark">PRECIOUS</div>
+        {/* RIGHT COLUMN */}
+        <div className="editorial-right">
+
+          {/* Contact + GitHub */}
+          <div className="editorial-block editorial-row">
+            <div onClick={() => setShowPopup(true)} className="editorial-link" style={{ cursor: "pointer" }}>
+              <i className="fas fa-envelope"></i> Email me!
+            </div>
+            <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="editorial-link">
+              <i className="fab fa-github"></i> GITHUB
+            </a>
+          </div>
+
+          {/* Quote */}
+          <div className="editorial-block">
+            <p className="editorial-tagline">Building between art and technology.</p>
+            <p className="editorial-tagline">Faith, rhythm, and repetition.</p>
+            <p className={`editorial-quote ${showText ? "fade-in" : "fade-out"}`}>
+              {quotes[quoteIndex]}
+            </p>
+          </div>
+
+          {/* Tech stack */}
+          <div className="editorial-block">
+            <h3 className="editorial-label">Tech stack</h3>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "10px" }}>
+              {[
+                { label: "JAVASCRIPT", bg: "#f7df1e", color: "#000" },
+                { label: "REACT JS", bg: "#61dafb", color: "#000" },
+                { label: "REACT NATIVE", bg: "#20232a", color: "#61dafb" },
+                { label: "VUE JS", bg: "#42b883", color: "#fff" },
+                { label: "MONGO DB", bg: "#4db33d", color: "#fff" },
+                { label: "POSTMAN", bg: "#ff6c37", color: "#fff" },
+                { label: "PHP", bg: "#8993be", color: "#fff" },
+                { label: "GITHUB", bg: "#333", color: "#fff" },
+              ].map(({ label, bg, color }) => (
+                <span key={label} style={{
+                  backgroundColor: bg, color,
+                  padding: "4px 10px", fontSize: "11px",
+                  fontWeight: "bold", fontFamily: "monospace",
+                  letterSpacing: "0.5px",
+                }}>
+                  {label}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Bearing my yoke */}
+          <div className="editorial-block">
+            <h3 className="editorial-label">BEARING MY YOKE</h3>
+            <p className="editorial-body image-text">
+              Heavy lifting<br />
+              what seems hard and far is made easy and close by...<br />
+              ...
+            </p>
+          </div>
+
+        </div>
       </div>
 
+      <div className="watermark">PRECIOUS</div>
+
+      {/* Popup */}
       {showPopup && (
         <div className="popup-overlay">
           <div className="popup-form">
             <h2>Contact Me</h2>
             <form onSubmit={handleSend}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                className="popup-input"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="popup-input"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Message"
-                className="popup-textarea"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-              />
+              <input type="text" name="name" placeholder="Name" className="popup-input"
+                value={formData.name} onChange={handleInputChange} required />
+              <input type="email" name="email" placeholder="Email" className="popup-input"
+                value={formData.email} onChange={handleInputChange} required />
+              <textarea name="message" placeholder="Message" className="popup-textarea"
+                value={formData.message} onChange={handleInputChange} required />
               <div className="popup-buttons">
-                <button type="submit" className="popup-send">
-                  Send
-                </button>
-                <button type="button" onClick={handleCancel} className="popup-cancel">
-                  Cancel
-                </button>
+                <button type="submit" className="popup-send">Send</button>
+                <button type="button" onClick={handleCancel} className="popup-cancel">Cancel</button>
               </div>
             </form>
           </div>
