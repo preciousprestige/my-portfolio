@@ -117,47 +117,74 @@ const Portfolio = () => {
       {/* Moving text */}
       <h1 className="moving-text">walk with me...</h1>
 
-      {/* ── Editorial layout ── */}
-      <div className="editorial-layout">
+      {/* ── Single column editorial blocks ── */}
+      <div className="ed-page">
 
-        {/* LEFT — socials */}
-        <div className="editorial-left">
-          <div className="editorial-block">
-            <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="editorial-link">
+        {/* Row 1: socials left | tagline center | nav right */}
+        <div className="ed-row">
+          <div className="ed-cell ed-left">
+            <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="ed-link">
               <i className="fab fa-instagram"></i> Instagram
             </a>
-            <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk" target="_blank" rel="noopener noreferrer" className="editorial-link">
+            <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk" target="_blank" rel="noopener noreferrer" className="ed-link">
               <i className="fab fa-spotify"></i> Spotify
             </a>
-            <div className="editorial-link">
+            <div className="ed-link">
               <i className="fas fa-laptop-code"></i> Software dev
             </div>
           </div>
 
-          {/* Bearing my yoke */}
-          <div className="editorial-block">
-            <h3 className="editorial-label">BEARING MY YOKE</h3>
-            <p className="editorial-body image-text">
+          <div className="ed-cell ed-center">
+            <p className="ed-tagline">Building between art and technology.</p>
+            <p className="ed-tagline">Faith, rhythm, and repetition.</p>
+            <p className="ed-tagline" onClick={() => setShowPopup(true)} style={{ cursor: "pointer", marginTop: "8px" }}>
+              <i className="fas fa-envelope"></i> Email me!
+            </p>
+          </div>
+
+          <div className="ed-cell ed-right">
+            <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="ed-nav-link">
+              <i className="fab fa-github"></i> GITHUB
+            </a>
+            <span onClick={() => navigate("/works")} className="ed-nav-link">
+              📁 SEE WORKS
+            </span>
+          </div>
+        </div>
+
+        {/* Row 2: bearing my yoke — left label, right text */}
+        <div className="ed-row">
+          <div className="ed-cell ed-left">
+            <span className="ed-section-title">BEARING MY YOKE</span>
+          </div>
+          <div className="ed-cell ed-right" style={{ flex: 2 }}>
+            <p className="ed-body image-text">
               Heavy lifting<br />
               what seems hard and far is made easy and close by...<br />
               ...
             </p>
           </div>
+        </div>
 
-          {/* Tech stack */}
-          <div className="editorial-block">
-            <h3 className="editorial-label">Tech stack</h3>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "10px" }}>
-              {[
-                { label: "JAVASCRIPT", bg: "#f7df1e", color: "#000" },
-                { label: "REACT JS", bg: "#61dafb", color: "#000" },
-                { label: "REACT NATIVE", bg: "#20232a", color: "#61dafb" },
-                { label: "VUE JS", bg: "#42b883", color: "#fff" },
-                { label: "MONGO DB", bg: "#4db33d", color: "#fff" },
-                { label: "POSTMAN", bg: "#ff6c37", color: "#fff" },
-                { label: "PHP", bg: "#8993be", color: "#fff" },
-                { label: "GITHUB", bg: "#333", color: "#fff" },
-              ].map(({ label, bg, color }) => (
+        {/* Row 3: most high — right aligned label */}
+        <div className="ed-row ed-row-right">
+          <span className="ed-section-title">MOST HIGH</span>
+          <p className="ed-body" style={{ marginTop: "8px" }}>
+            My faith is a personal choice, even with the chaos in my mind. I still believe.<br />
+            Faith is self-discovery, faith is patience, and faith is continuity.
+          </p>
+        </div>
+
+        {/* Row 4: tech stack */}
+        <div className="ed-row">
+          <div className="ed-cell ed-left">
+            <span className="ed-section-title">TECH STACK</span>
+          </div>
+          <div className="ed-cell ed-right" style={{ flex: 2 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+              {["JAVASCRIPT","REACT JS","REACT NATIVE","VUE JS","MONGO DB","POSTMAN","PHP","GITHUB"].map((label) => (
+  <span key={label} className="tech-tag">{label}</span>
+              map(({ label, bg, color }) => 
                 <span key={label} style={{
                   backgroundColor: bg, color,
                   padding: "4px 10px", fontSize: "11px",
@@ -171,35 +198,26 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* RIGHT — bio + nav */}
-        <div className="editorial-right">
-
-          {/* tagline + quote */}
-          <div className="editorial-block">
-            <p className="editorial-tagline">Building between art and technology.</p>
-            <p className="editorial-tagline">Faith, rhythm, and repetition.</p>
-            <p className={`editorial-quote ${showText ? "fade-in" : "fade-out"}`}>
-              {quotes[quoteIndex]}
+        {/* Row 5: who is precious nav */}
+        <div className="ed-row">
+          <div className="ed-cell ed-left">
+            <span
+              onClick={() => navigate("/who-is-precious")}
+              className="ed-section-title"
+              style={{ cursor: "pointer", textDecoration: "underline" }}
+            >
+              PRECIOUS?
+            </span>
+          </div>
+          <div className="ed-cell ed-right" style={{ flex: 2 }}>
+            <p className="ed-body">
+              <span className={`${showText ? "fade-in" : "fade-out"}`}>
+                {quotes[quoteIndex]}
+              </span>
             </p>
           </div>
-
-          {/* Contact + GitHub */}
-          <div className="editorial-block editorial-row">
-            <div onClick={() => setShowPopup(true)} className="editorial-link" style={{ cursor: "pointer" }}>
-              <i className="fas fa-envelope"></i> Email me!
-            </div>
-            <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="editorial-link">
-              <i className="fab fa-github"></i> GITHUB
-            </a>
-          </div>
-
-          {/* Nav */}
-          <div className="editorial-block editorial-nav">
-            <span onClick={() => navigate("/who-is-precious")} className="editorial-nav-link">precious?</span>
-            <span onClick={() => navigate("/works")} className="editorial-nav-link">see works</span>
-          </div>
-
         </div>
+
       </div>
 
       <div className="watermark">PRECIOUS</div>
