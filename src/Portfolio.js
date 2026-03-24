@@ -112,7 +112,7 @@ const Portfolio = () => {
 
           <div className="ed-cell ed-center">
             <div onClick={() => setShowPopup(true)} className="ed-link" style={{ cursor: "pointer" }}>
-              <i className="fas fa-envelope"></i> Email me!
+              <i className="fas fa-envelope"></i> CONTACT ME!
             </div>
             <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="ed-link">
               <i className="fab fa-github"></i> GITHUB
@@ -121,10 +121,10 @@ const Portfolio = () => {
 
           <div className="ed-cell ed-right">
             <span onClick={() => navigate("/who-is-precious")} className="ed-nav-link">
-              👨‍💻 precious?
+              👨‍💻 PRECIOUS?
             </span>
             <span onClick={() => navigate("/works")} className="ed-nav-link">
-              📁 projects
+              📁 PROJECTS.
             </span>
           </div>
         </div>
