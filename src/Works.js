@@ -14,36 +14,44 @@ import TEWImg from "./assets/TEW img.png";
 import TEWVid from "./assets/TEW.mp4";
 import zeroLimit from "./assets/zero-limit.png";
 
+// ── Add your new assets here when ready ──────────────────────────────────────
+// import clinicImg from "./assets/clinic-img.jpg";
+// import clinicVid from "./assets/clinic.mp4";
+// import therapistImg from "./assets/therapist-img.jpg";
+// import therapistVid from "./assets/therapist.mp4";
+
+// ── Section 1: Web / App Projects ────────────────────────────────────────────
 const allProjects = [
   {
     id: 1,
     title: "A Queuing Appointment and Patient Records Management with Inventory System",
     video: TuamduVid,
     image: TuamduImg,
-    description: `This website was made to automate the manual system at Trinity University of Asia Medical and Dental Unit...`,
+    description: "This website was made to automate the manual system at Trinity University of Asia Medical and Dental Unit...",
     tech: "Built with Vue.js",
     link: "https://tuamdu.xyz/",
   },
   {
     id: 2,
-    title: "SIMBA CONSULT",
-    video: simbaconsult,
-    image: simbaImage,
-    description: `A simple website for Simba Engineering Consultant`,
+    title: "CLINIC BILLING & PRESCRIPTION SYSTEM",
+    video: null,   // replace null with clinicVid when ready
+    image: null,   // replace null with clinicImg when ready
+    description: "A clinic billing and prescription management system for healthcare providers.",
     tech: "Built with React.js",
-    link: "https://preciousprestige.github.io/simba-consultant/",
+    link: "#",
   },
   {
     id: 3,
-    title: "SANCTIFIED & CHILLED",
-    video: sanctifiedVideo,
-    image: sanctifiedImage,
-    description: `A simple website for Sanctified & Chilled podcast`,
+    title: "THERAPIST-PATIENTS JOURNAL APP",
+    video: null,   // replace null with therapistVid when ready
+    image: null,   // replace null with therapistImg when ready
+    description: "A journal application connecting therapists and patients for session tracking and notes.",
     tech: "Built with React.js",
-    link: "https://preciousprestige.github.io/sanctified-and-chIlled/",
+    link: "#",
   },
 ];
 
+// ── Section 2: E-Commerce / 2D & 3D Projects ─────────────────────────────────
 const newProjects = [
   {
     id: "n1",
@@ -65,15 +73,25 @@ const newProjects = [
   },
   {
     id: "n3",
-    title: "PROJECT TITLE",
-    video: null,
-    image: null,
-    description: "Project description goes here...",
-    tech: "Built with ...",
-    link: "#",
+    title: "SIMBA CONSULT",
+    video: simbaconsult,
+    image: simbaImage,
+    description: "A simple website for Simba Engineering Consultant.",
+    tech: "Built with React.js",
+    link: "https://preciousprestige.github.io/simba-consultant/",
+  },
+  {
+    id: "n4",
+    title: "SANCTIFIED & CHILLED",
+    video: sanctifiedVideo,
+    image: sanctifiedImage,
+    description: "A simple website for Sanctified & Chilled podcast.",
+    tech: "Built with React.js",
+    link: "https://preciousprestige.github.io/sanctified-and-chIlled/",
   },
 ];
 
+// ── Reusable project row ──────────────────────────────────────────────────────
 const ProjectRow = ({ projects, sectionId }) => {
   const [showVideoMap, setShowVideoMap] = useState({});
   const videoRefs = useRef({});
@@ -111,13 +129,10 @@ const ProjectRow = ({ projects, sectionId }) => {
                   <video
                     ref={(el) => (videoRefs.current[project.id] = el)}
                     className="works-video"
-                    autoPlay
-                    muted
-                    playsInline
+                    autoPlay muted playsInline
                     onEnded={() => handleVideoEnded(project.id)}
                   >
                     <source src={project.video} type="video/mp4" />
-                    your browser does not support the video tag
                   </video>
                 ) : (
                   <img src={project.image} alt={project.title} className="project-image" />
@@ -135,10 +150,8 @@ const ProjectRow = ({ projects, sectionId }) => {
             <div className="project-text">
               <h3>{project.title}</h3>
               <p className="project-description">
-                {project.description}
-                <br />
-                {project.tech}
-                <br />
+                {project.description}<br />
+                {project.tech}<br />
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="here-link">
                   HERE
                 </a>
@@ -152,33 +165,22 @@ const ProjectRow = ({ projects, sectionId }) => {
   );
 };
 
+// ── Main component ────────────────────────────────────────────────────────────
 const Works = () => {
   const navigate = useNavigate();
 
   return (
     <div className="works-container">
-      <button onClick={() => navigate("/portfolio")} className="back-button top-left">
-        ←
-      </button>
+      <button onClick={() => navigate("/portfolio")} className="back-button top-left">←</button>
 
       <h1 className="moving-text">MY PROJECTS...</h1>
-      <br />
-      SELECTED PROJECTS...
-      <br />
-      <div className="header-lines">
-        <hr /><hr /><hr />
-      </div>
-
+      <br />SELECTED PROJECTS...<br />
+      <div className="header-lines"><hr /><hr /><hr /></div>
       <ProjectRow projects={allProjects} sectionId="s1" />
 
       <h1 className="moving-text">E COMMERCE / 2D & 3D PROJECTS...</h1>
-      <br />
-      SELECTED PROJECTS...
-      <br />
-      <div className="header-lines">
-        <hr /><hr /><hr />
-      </div>
-
+      <br />SELECTED PROJECTS...<br />
+      <div className="header-lines"><hr /><hr /><hr /></div>
       <ProjectRow projects={newProjects} sectionId="s2" />
 
       <img src={globeImage} alt="spinning globe" className="floating-globe" />

@@ -7,12 +7,9 @@ import videoSrc from "./assets/video.mp4";
 import VinylPlayer from "./VinylPlayer";
 import { useNavigate } from "react-router-dom";
 
-const quotes = ["BUILD WITH ME"];
-
 const Portfolio = () => {
   const navigate = useNavigate();
   const [time, setTime] = useState(new Date());
-  const [quoteIndex, setQuoteIndex] = useState(0);
   const [showText, setShowText] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -26,16 +23,7 @@ const Portfolio = () => {
   }, []);
 
   useEffect(() => {
-    const quoteInterval = setInterval(() => {
-      setQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-    }, 5000);
-    return () => clearInterval(quoteInterval);
-  }, []);
-
-  useEffect(() => {
-    const fadeInterval = setInterval(() => {
-      setShowText((prev) => !prev);
-    }, 2000);
+    const fadeInterval = setInterval(() => setShowText((prev) => !prev), 2000);
     return () => clearInterval(fadeInterval);
   }, []);
 
@@ -58,11 +46,8 @@ const Portfolio = () => {
 
   const getTimeString = (timezone) =>
     new Intl.DateTimeFormat("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: true,
-      timeZone: timezone,
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+      hour12: true, timeZone: timezone,
     }).format(time);
 
   const handleInputChange = (e) => {
@@ -72,25 +57,17 @@ const Portfolio = () => {
 
   const handleSend = (e) => {
     e.preventDefault();
-    emailjs
-      .send(
-        "service_p6zcxwd",
-        "template_rxs0qno",
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          message: formData.message,
-        },
-        "FOQr-nq-kFsCFN41k"
-      )
+    emailjs.send("service_p6zcxwd", "template_rxs0qno", {
+      from_name: formData.name,
+      reply_to: formData.email,
+      message: formData.message,
+    }, "FOQr-nq-kFsCFN41k")
       .then(() => {
         alert("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
         setShowPopup(false);
       })
-      .catch(() => {
-        alert("Failed to send message. Please try again.");
-      });
+      .catch(() => alert("Failed to send message. Please try again."));
   };
 
   const handleCancel = () => {
@@ -109,25 +86,24 @@ const Portfolio = () => {
           <source src={videoSrc} type="video/mp4" />
         </video>
         <div className="typewriter-text">
-          {typedText}
-          <span className="blinking-cursor">|</span>
+          {typedText}<span className="blinking-cursor">|</span>
         </div>
       </div>
 
-      {/* Moving text */}
+      {/* Sliding moving text */}
       <h1 className="moving-text">walk with me...</h1>
 
-      {/* ── Single column editorial blocks ── */}
+      {/* ── Editorial rows ── */}
       <div className="ed-page">
 
-        {/* Row 1: socials left | tagline center | nav right */}
+        {/* Row 1: Socials | Email + GitHub | precious? + projects */}
         <div className="ed-row">
           <div className="ed-cell ed-left">
             <a href="https://www.instagram.com/that.ville/" target="_blank" rel="noopener noreferrer" className="ed-link">
-              <i className="fab fa-instagram"></i> Instagram
+              <i className="fab fa-instagram" style={{ color: "#C13584" }}></i> Instagram
             </a>
             <a href="https://open.spotify.com/playlist/4VLnFpqNblHKJNSFKRvsMk" target="_blank" rel="noopener noreferrer" className="ed-link">
-              <i className="fab fa-spotify"></i> Spotify
+              <i className="fab fa-spotify" style={{ color: "#1DB954" }}></i> Spotify
             </a>
             <div className="ed-link">
               <i className="fas fa-laptop-code"></i> Software dev
@@ -135,29 +111,30 @@ const Portfolio = () => {
           </div>
 
           <div className="ed-cell ed-center">
-            <p className="ed-tagline">Building between art and technology.</p>
-            <p className="ed-tagline">Faith, rhythm, and repetition.</p>
-            <p className="ed-tagline" onClick={() => setShowPopup(true)} style={{ cursor: "pointer", marginTop: "8px" }}>
+            <div onClick={() => setShowPopup(true)} className="ed-link" style={{ cursor: "pointer" }}>
               <i className="fas fa-envelope"></i> Email me!
-            </p>
+            </div>
+            <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="ed-link">
+              <i className="fab fa-github"></i> GITHUB
+            </a>
           </div>
 
           <div className="ed-cell ed-right">
-            <a href="https://github.com/preciousprestige" target="_blank" rel="noopener noreferrer" className="ed-nav-link">
-              <i className="fab fa-github"></i> GITHUB
-            </a>
+            <span onClick={() => navigate("/who-is-precious")} className="ed-nav-link">
+              👨‍💻 precious?
+            </span>
             <span onClick={() => navigate("/works")} className="ed-nav-link">
-              📁 SEE WORKS
+              📁 projects
             </span>
           </div>
         </div>
 
-        {/* Row 2: bearing my yoke — left label, right text */}
+        {/* Row 2: Bearing my yoke */}
         <div className="ed-row">
           <div className="ed-cell ed-left">
-            <span className="ed-section-title">BEARING MY YOKE</span>
+            <span className="ed-section-title">bearing my yoke</span>
           </div>
-          <div className="ed-cell ed-right" style={{ flex: 2 }}>
+          <div className="ed-cell" style={{ flex: 2 }}>
             <p className="ed-body image-text">
               Heavy lifting<br />
               what seems hard and far is made easy and close by...<br />
@@ -166,55 +143,28 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Row 3: most high — right aligned label */}
-        <div className="ed-row ed-row-right">
-          <span className="ed-section-title">MOST HIGH</span>
-          <p className="ed-body" style={{ marginTop: "8px" }}>
-            My faith is a personal choice, even with the chaos in my mind. I still believe.<br />
-            Faith is self-discovery, faith is patience, and faith is continuity.
-          </p>
-        </div>
-
-        {/* Row 4: tech stack */}
+        {/* Row 3: Tech stack */}
         <div className="ed-row">
           <div className="ed-cell ed-left">
-            <span className="ed-section-title">TECH STACK</span>
+            <span className="ed-section-title">tech stack</span>
           </div>
-          <div className="ed-cell ed-right" style={{ flex: 2 }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-              {["JAVASCRIPT","REACT JS","REACT NATIVE","VUE JS","MONGO DB","POSTMAN","PHP","GITHUB"].map((label) => (
-  <span key={label} className="tech-tag">{label}</span>
-              map(({ label, bg, color }) => 
-                <span key={label} style={{
-                  backgroundColor: bg, color,
-                  padding: "4px 10px", fontSize: "11px",
-                  fontWeight: "bold", fontFamily: "monospace",
-                  letterSpacing: "0.5px",
-                }}>
+          <div className="ed-cell" style={{ flex: 2 }}>
+            <div className="tech-tags-row">
+              {[
+                { label: "JAVASCRIPT", bg: "#f7df1e", color: "#5a4e00" },
+                { label: "REACT JS", bg: "#61dafb", color: "#004d5e" },
+                { label: "REACT NATIVE", bg: "#20232a", color: "#61dafb" },
+                { label: "VUE JS", bg: "#42b883", color: "#1a4a34" },
+                { label: "MONGO DB", bg: "#4db33d", color: "#1a3d15" },
+                { label: "POSTMAN", bg: "#ff6c37", color: "#5e1c00" },
+                { label: "PHP", bg: "#8993be", color: "#1a1e3a" },
+                { label: "GITHUB", bg: "#333", color: "#ccc" },
+              ].map(({ label, bg, color }) => (
+                <span key={label} className="tech-tag" style={{ backgroundColor: bg, color }}>
                   {label}
                 </span>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Row 5: who is precious nav */}
-        <div className="ed-row">
-          <div className="ed-cell ed-left">
-            <span
-              onClick={() => navigate("/who-is-precious")}
-              className="ed-section-title"
-              style={{ cursor: "pointer", textDecoration: "underline" }}
-            >
-              PRECIOUS?
-            </span>
-          </div>
-          <div className="ed-cell ed-right" style={{ flex: 2 }}>
-            <p className="ed-body">
-              <span className={`${showText ? "fade-in" : "fade-out"}`}>
-                {quotes[quoteIndex]}
-              </span>
-            </p>
           </div>
         </div>
 
@@ -246,6 +196,9 @@ const Portfolio = () => {
       <footer className="footer">
         <span className="timestamp">
           MANILA {getTimeString("Asia/Manila")} | ABUJA {getTimeString("Africa/Lagos")}
+        </span>
+        <span className={`quote ${showText ? "fade-in" : "fade-out"}`}>
+          BUILD WITH ME
         </span>
       </footer>
     </div>
