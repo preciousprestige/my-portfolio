@@ -13,6 +13,10 @@ import sanctifiedImage from "./assets/sanctified.jpg";
 import TEWImg from "./assets/TEW img.png";
 import TEWVid from "./assets/TEW.mp4";
 import zeroLimit from "./assets/zero-limit.png";
+import ClinicBillingSystemVid from "./assets/Clinic billing system.mp4";
+import ClinicBillingsystemImg from "./assets/Clinic billing system.png";
+import MindBridgeImg from "./assets/MINDBRIDGE.PNG";
+import MindBridgeVid from "./assets/MINDBRIDGE.mp4";
 
 // ── Add your new assets here when ready ──────────────────────────────────────
 // import clinicImg from "./assets/clinic-img.jpg";
@@ -34,20 +38,20 @@ const allProjects = [
   {
     id: 2,
     title: "CLINIC BILLING & PRESCRIPTION SYSTEM",
-    video: null,   // replace null with clinicVid when ready
-    image: null,   // replace null with clinicImg when ready
+    video: ClinicBillingSystemVid,  
+    image: ClinicBillingsystemImg,
     description: "A clinic billing and prescription management system for healthcare providers.",
     tech: "Built with React.js",
-    link: "#",
+    link: "https://clinic-billing-prescription-system.vercel.app/",
   },
   {
     id: 3,
     title: "THERAPIST-PATIENTS JOURNAL APP",
-    video: null,   // replace null with therapistVid when ready
-    image: null,   // replace null with therapistImg when ready
+    video: MindBridgeVid,
+    image: MindBridgeImg,
     description: "A journal application connecting therapists and patients for session tracking and notes.",
     tech: "Built with React.js",
-    link: "#",
+    link: "https://therapist-patients-journaling-app.vercel.app/",
   },
 ];
 

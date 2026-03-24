@@ -15,7 +15,7 @@ const Portfolio = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [currentPin] = useState(null);
   const [typedText, setTypedText] = useState("");
-  const fullText = "Hi, I'm Precious — I build poetic interfaces";
+  const fullText = "BUILD WITH ME...";
 
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
@@ -198,7 +198,6 @@ const Portfolio = () => {
           MANILA {getTimeString("Asia/Manila")} | ABUJA {getTimeString("Africa/Lagos")}
         </span>
         <span className={`quote ${showText ? "fade-in" : "fade-out"}`}>
-          BUILD WITH ME
         </span>
       </footer>
     </div>
