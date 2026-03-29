@@ -17,6 +17,8 @@ import ClinicBillingSystemVid from "./assets/Clinic billing system.mp4";
 import ClinicBillingsystemImg from "./assets/Clinic billing system.png";
 import MindBridgeImg from "./assets/MINDBRIDGE.PNG";
 import MindBridgeVid from "./assets/MINDBRIDGE.mp4";
+import ReliqCRMVid from "./assets/ReliqCRM MAIN.mp4";
+import ReliqCRMImg from "./assets/Reliqcrm.png";
 
 // ── Add your new assets here when ready ──────────────────────────────────────
 // import clinicImg from "./assets/clinic-img.jpg";
@@ -28,17 +30,17 @@ import MindBridgeVid from "./assets/MINDBRIDGE.mp4";
 const allProjects = [
   {
     id: 1,
-    title: "A Queuing Appointment and Patient Records Management with Inventory System",
-    video: TuamduVid,
-    image: TuamduImg,
-    description: "This website was made to automate the manual system at Trinity University of Asia Medical and Dental Unit...",
-    tech: "Built with Vue.js",
-    link: "https://tuamdu.xyz/",
+    title: "RELIQCRM",
+    video: ReliqCRMVid,
+    image: ReliqCRMImg,
+    description: "A customer relation management system for managing clients and business relationships.",
+    tech: "Built with React.js",
+    link: "https://inventory-management-with-analytics.vercel.app/",
   },
   {
     id: 2,
     title: "CLINIC BILLING & PRESCRIPTION SYSTEM",
-    video: ClinicBillingSystemVid,  
+    video: ClinicBillingSystemVid,
     image: ClinicBillingsystemImg,
     description: "A clinic billing and prescription management system for healthcare providers.",
     tech: "Built with React.js",
@@ -52,6 +54,15 @@ const allProjects = [
     description: "A journal application connecting therapists and patients for session tracking and notes.",
     tech: "Built with React.js",
     link: "https://therapist-patients-journaling-app.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "A Queuing Appointment and Patient Records Management with Inventory System",
+    video: TuamduVid,
+    image: TuamduImg,
+    description: "This website was made to automate the manual system at Trinity University of Asia Medical and Dental Unit...",
+    tech: "Built with Vue.js",
+    link: "https://tuamdu.xyz/",
   },
 ];
 
